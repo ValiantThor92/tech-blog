@@ -1,0 +1,62 @@
+[
+  {
+      "first_name": "Trav",
+      "last_name": "Lee",
+      "email": "travis1@gmail.com",
+      "password": "password123"
+  },
+  {
+      "first_name": "Lee",
+      "last_name": "Nel",
+      "email": "travis2@gmail.com",
+      "password": "password123"
+  },
+  {
+      "first_name": "Home",
+      "last_name": "Fries",
+      "email": "travis3@gmail.com",
+      "password": "password123"
+  },
+  {
+    "first_name": "Mike",
+    "last_name": "Pancake",
+    "email": "travis4@gmail.com",
+    "password": "password123"
+  },
+  {
+    "first_name": "Patrick",
+    "last_name": "Star",
+    "email": "travis5@gmail.com",
+    "password": "password123"
+  },
+  {
+    "first_name": "jimmy",
+    "last_name": "Neutron",
+    "email": "travis6@gmail.com",
+    "password": "password123"
+  },
+  {
+    "first_name": "Carl",
+    "last_name": "Wheezer",
+    "email": "travis7@gmail.com",
+    "password": "password123"
+  },
+  {
+    "first_name": "JimmysMom",
+    "last_name": "Neutron",
+    "email": "travis8@gmail.com",
+    "password": "password123"
+  },
+  {
+    "first_name": "Shane",
+    "last_name": "ADHD",
+    "email": "travis9@gmail.com",
+    "password": "password123"
+  },
+  {
+    "first_name": "Sandy",
+    "last_name": "Cheeks",
+    "email": "travis10@gmail.com",
+    "password": "password123"
+  }
+]
