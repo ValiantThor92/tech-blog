@@ -17,10 +17,7 @@ router.get('/', async (req, res) => {
         }
       ]
     })
-    const posts = postData.map(post => post.get(
-      {
-        plain: true
-      }));
+    const posts = postData.map(post => post.get({ plain: true }));
     console.log(posts);
     res.render('homepage', {
       posts,
@@ -30,6 +27,7 @@ router.get('/', async (req, res) => {
       res.status(500).json(err);
   }
 });
+
 // get single post by id
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
@@ -41,11 +39,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
         }
       ]
     })
-    const post = postData.get(
-      {
-        plain: true
-      }
-    );
+    const post = postData.get({ plain: true });
     console.log(post);
     res.render('post',
       {
@@ -56,12 +50,59 @@ router.get('/post/:id', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
+
 // get single post comments
-router.get('/post/:id/comment', withAuth, async (req, res) => {})
+router.get('/post/:id/comment', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        { 
+          model: User, 
+          attributes: ['first_name', 'last_name']
+        }
+      ]
+    })
+    const post = postData.get({ plain: true });
+    const commentsData = await Comment.findAll({
+      where: 
+      {
+        post_id: req.params.id
+      },
+      include: [
+        { 
+          model: Post 
+        }, 
+        {
+          model: User
+        }
+      ]
+    })
+    const comments = commentsData.map(comment=> comment.get({plain: true}));
+    console.log(comments);
+    res.render('postComment', { post, comments, logged_in: req.session.logged_in})
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // get dashboard data
-router.get('/dashboard', withAuth, async (req, res) => {})
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{ model: Post }]
+    })
+
+    const user = userData.get({ plain: true });
+    console.log(user);
+    res.render('dashboard', { user, logged_in: true })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // get login data and redirect to the dash
 router.get('/login', (req, res) => {})
+
 // get signup data
 router.get('/signup', (req, res) => {})
