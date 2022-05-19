@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header" id="heading{{post.id}}">
+      <h5 class="mb-0">
+        <button style="width: 100%; text-align: left;" class="btn btn-link" data-toggle="collapse" data-target="#collapse{{post.id}}" aria-expanded="true" aria-controls="collapse{{post.id}}">
+          <div class="col-md-12">
+            <h4>{{post.title}}</h4>
+            <p>{{post.content}}</p>
+            <p style="font-size: 14px;">Created by {{post.user.first_name}} {{post.user.last_name}} on {{format_date post.date_created}}</p>
+          </div>
+        </button>
+      </h5>
+    </div>
+    <div id="collapse{{post.id}}" class="collapse show" aria-labelledby="heading{{post.id}}" data-parent="#accordion">
+      <div class="card-body">
+        <ul class="list-group">
+          {{#each comments as |comment| }}
+          <li class="list-group-item">
+            <h6>{{comment.content}}</h6>
+            <p style="font-size: 14px;">Comment by {{comment.user.first_name}} {{comment.user.last_name}} on {{format_date comment.date_created}}</p>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPostModal" data-whatever="@getbootstrap">New Comment</button>
+
+            <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newPostModalLabel">New Comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">      
+                    <div class="form-group">
+                        <label for="comment-content" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="comment-content"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="create-comment" type="button" class="btn btn-primary" data-post-id="{{post.id}}">Create Comment</button>
+                </div>
+               
+                </div>
+            </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+<script src="/js/comment.js"></script>
