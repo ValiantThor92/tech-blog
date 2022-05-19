@@ -102,7 +102,17 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 // get login data and redirect to the dash
-router.get('/login', (req, res) => {})
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+  res.render('login');
+});
 
 // get signup data
-router.get('/signup', (req, res) => {})
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+module.exports = router;
