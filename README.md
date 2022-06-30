@@ -49,7 +49,7 @@ These instructions will get you a copy of the project up and running on your loc
 * [Express-Handlebars](https://www.npmjs.com/package/express-handlebars)
 * [Express-Session](https://www.npmjs.com/package/express-session)
 
-![See Deployed App](https://frozen-spire-87692.herokuapp.com/)
+[See Deployed App](https://frozen-spire-87692.herokuapp.com/)
 
 ## License
 
